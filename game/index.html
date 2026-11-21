@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Double Take — Spot the Difference</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='13' cy='13' r='8' fill='none' stroke='%23e4572e' stroke-width='4'/%3E%3Cline x1='19' y1='19' x2='28' y2='28' stroke='%23e4572e' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>Double Take</h1>
+        <p class="tagline">Spot the difference &middot; three scenes, twenty-five sneaky changes</p>
+      </div>
+    </div>
+    <div class="level-tabs" id="levelTabs" role="tablist" aria-label="Scenes"></div>
+  </header>
+
+  <section class="hud" aria-label="Game status">
+    <div class="hud-counter">
+      <span class="hud-label">Differences left</span>
+      <span class="hud-big" id="leftCount">&ndash;</span>
+    </div>
+    <div class="hud-progress">
+      <div class="hud-row">
+        <span id="foundText">Found 0 of 0</span>
+        <span id="sceneName">Sunny Cove</span>
+      </div>
+      <div class="dots" id="foundDots" aria-hidden="true"></div>
+      <div class="timebar" aria-hidden="true"><div class="timebar-fill" id="timeFill"></div></div>
+    </div>
+    <div class="hud-clock">
+      <span class="hud-label">Time left</span>
+      <span class="hud-big" id="clock">4:00</span>
+    </div>
+    <div class="hud-buttons">
+      <button id="hintBtn" type="button" title="Hint (H)">&#128161; Hint <span class="pill" id="hintCount">3</span></button>
+      <button id="soundBtn" type="button" title="Sound on/off (M)">&#128266; Sound</button>
+      <button id="restartBtn" type="button" title="Restart scene (R)">&#8635; Restart</button>
+    </div>
+  </section>
+
+  <main class="panels">
+    <figure class="panel">
+      <canvas id="leftCanvas" width="480" height="360"></canvas>
+      <figcaption>Original</figcaption>
+    </figure>
+    <figure class="panel">
+      <canvas id="rightCanvas" width="480" height="360"></canvas>
+      <figcaption>Spot the changes &mdash; click a difference in either picture</figcaption>
+    </figure>
+  </main>
+
+  <p class="toast" id="toast" role="status">Find every change between the two pictures. Wrong clicks cost 5 seconds!</p>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="overlay-card">
+      <h2 id="overlayTitle">Scene complete!</h2>
+      <div class="stars" id="overlayStars" aria-hidden="true"></div>
+      <p id="overlayText"></p>
+      <div class="overlay-buttons">
+        <button id="overlayMain" type="button">Next scene</button>
+        <button id="overlayRetry" type="button">Replay scene</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>Keys: <b>H</b> hint &middot; <b>R</b> restart &middot; <b>N</b> next scene &middot; <b>M</b> sound</span>
+    <span>Hints cost 10 seconds. A hint left over at the end is worth 5 bonus seconds of glory.</span>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
